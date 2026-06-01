@@ -1,0 +1,256 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.5;
+  transition: background 0.2s, color 0.2s;
+}
+
+.app-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Desktop: azules/grises */
+body {
+  background: #eef2f5;
+  color: #1e2a3e;
+}
+
+.card, .main-nav, header, footer {
+  background: #ffffff;
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+
+h1, h2, h3 {
+  color: #0b3b5f;
+}
+
+.btn-primary {
+  background: #1e6f5c;
+  color: white;
+  border: none;
+}
+.btn-primary:hover {
+  background: #0f4c3f;
+}
+.btn-secondary, .btn-case {
+  background: #e0e7ed;
+  color: #1e2a3e;
+}
+.btn-case:hover {
+  background: #cbd5e1;
+}
+
+/* Tablet: tonos tierra */
+@media (min-width: 768px) and (max-width: 1024px) {
+  body {
+    background: #fdf8f0;
+    color: #3e2a1f;
+  }
+  .card, .main-nav, header, footer {
+    background: #fffaf2;
+  }
+  h1, h2, h3 {
+    color: #b4652a;
+  }
+  .btn-primary {
+    background: #c17b3c;
+  }
+  .btn-primary:hover {
+    background: #9b5e2a;
+  }
+  .btn-secondary, .btn-case {
+    background: #f3e9de;
+    color: #5a3e2b;
+  }
+}
+
+/* Celular: verdes */
+@media (max-width: 767px) {
+  body {
+    background: #f4f1ea;
+    color: #2d3e2b;
+  }
+  .card, .main-nav, header, footer {
+    background: #fef9e6;
+    border-radius: 1rem;
+  }
+  h1, h2, h3 {
+    color: #4a784a;
+  }
+  .btn-primary {
+    background: #5e8c5e;
+  }
+  .btn-primary:hover {
+    background: #3d5c3d;
+  }
+  .btn-secondary, .btn-case {
+    background: #e6dfc7;
+    color: #2a4b2a;
+  }
+  .flex-row, .form-grid {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+}
+
+header {
+  text-align: center;
+  padding: 2rem 1rem;
+  margin-bottom: 2rem;
+}
+.main-nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+.main-nav a {
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.4rem 1rem;
+  border-radius: 2rem;
+  transition: 0.2s;
+  color: inherit;
+}
+.main-nav a:hover {
+  background: rgba(0,0,0,0.05);
+}
+.card {
+  padding: 1.8rem;
+  margin-bottom: 2rem;
+}
+.table-responsive {
+  overflow-x: auto;
+}
+.price-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+.price-table th, .price-table td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+.note-card {
+  background: #f8f9fa;
+  padding: 0.8rem;
+  border-radius: 1rem;
+  font-size: 0.9rem;
+  margin-top: 0.8rem;
+}
+.flex-row, .form-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-end;
+  margin-bottom: 1rem;
+}
+.input-group {
+  flex: 1;
+  min-width: 180px;
+}
+.input-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+input, select, button {
+  padding: 0.7rem 1rem;
+  border-radius: 1rem;
+  border: 1px solid #ccc;
+  font-family: inherit;
+  font-size: 1rem;
+}
+button {
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+}
+.btn-group {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+}
+.result-card {
+  background: #f3f6fa;
+  padding: 1rem;
+  border-radius: 1.2rem;
+  margin-top: 1rem;
+}
+.budget-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+.shopping-area {
+  flex: 2;
+  min-width: 240px;
+}
+.presupuesto-area {
+  flex: 1.5;
+}
+.shopping-list .product-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.product-row label {
+  font-weight: 600;
+  min-width: 180px;
+}
+.product-row input {
+  width: 90px;
+}
+.cases-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+.case-item {
+  background: #fefefe;
+  border-radius: 1.2rem;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+.inline-img, .section-img, .hero-img img {
+  width: 100%;
+  border-radius: 1rem;
+  margin: 1rem 0;
+  display: block;
+}
+.hero-img {
+  margin-top: 1rem;
+}
+.footer-credits {
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.85rem;
+}
+@media (max-width: 600px) {
+  .app-wrapper {
+    padding: 0.5rem;
+  }
+  .card {
+    padding: 1rem;
+  }
+  .product-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

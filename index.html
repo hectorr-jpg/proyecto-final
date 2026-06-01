@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Visión Futuro | Precios 25/05/2026 · Cola Gasolina · Billetes BCB</title>
+  <link rel="stylesheet" href="css/estilos.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-wrapper">
+    <header>
+      <h1>🔮 Visiones para el futuro en tiempo de crisis</h1>
+      <p class="sub">Evolución de precios (base: 25 de mayo de 2026) · Simulador de cola en estación de servicio · Billetes sin valor legal</p>
+      <div class="hero-img">
+        <img src="img/1.jpg" alt="Contexto crisis">
+      </div>
+    </header>
+
+    <nav class="main-nav">
+      <a href="#contexto">Contexto</a>
+      <a href="#precios">Precios</a>
+      <a href="#presupuesto">Presupuesto</a>
+      <a href="#colagaso">Cola Gasolina</a>
+      <a href="#billete">Validador</a>
+      <a href="#casos">Casos</a>
+    </nav>
+
+    <main>
+      <!-- Contexto -->
+      <section id="contexto" class="card">
+        <h2>📉 Crisis real: inflación, desabastecimiento y planificación</h2>
+        <p>Simulador educativo que muestra variación semanal de precios de la canasta básica (con valores base del 25 de mayo de 2026), permite planificar compras con presupuesto familiar, y estima si alcanzarás a cargar gasolina según tu posición en la fila y el modelo de tu auto. También verifica billetes sin valor legal (BCB).</p>
+        <img src="img/2.png" class="section-img">
+      </section>
+
+      <!-- Sección PRECIOS con variación semanal -->
+      <section id="precios" class="card">
+        <h2>🥬 Precios de la canasta (base: 25 de mayo de 2026)</h2>
+        <p>Los precios mostrados como "costo actual" son los del 25/05/2026. Cada semana pueden subir, bajar o mantenerse. Usa el botón para simular una nueva semana.</p>
+        <div class="table-responsive">
+          <table class="price-table">
+            <thead>
+              <tr><th>Producto</th><th>Costo anterior (Bs)</th><th>Costo actual (Bs) - 25/05/2026</th><th>Variación semanal</th><th>Predicción próxima semana</th></tr>
+            </thead>
+            <tbody id="priceTableBody"></tbody>
+          </table>
+        </div>
+        <div class="btn-group">
+          <button id="nextWeekBtn" class="btn-primary">📅 Simular próxima semana</button>
+          <button id="resetPricesBtn" class="btn-secondary">⟳ Reiniciar precios al 25/05/2026</button>
+        </div>
+        <div class="note-card">📊 La variación se calcula con datos históricos: puede subir hasta +20%, bajar hasta -15% o mantenerse. La predicción usa el promedio de las últimas dos variaciones.</div>
+      </section>
+
+      <!-- Simulador de compras familiares (usa precios actuales) -->
+      <section id="presupuesto" class="card">
+        <h2>🛒 ¿Alcanza tu presupuesto? Simulador de compras</h2>
+        <div class="budget-grid">
+          <div class="shopping-area" id="shoppingListContainer"></div>
+          <div class="presupuesto-area">
+            <label for="budgetInput">💰 Presupuesto familiar (Bs):</label>
+            <input type="number" id="budgetInput" value="300" step="5">
+            <div class="btn-group">
+              <button id="calcBudgetBtn" class="btn-primary">Calcular si alcanza</button>
+              <button id="resetShoppingBtn" class="btn-secondary">Limpiar cantidades</button>
+            </div>
+            <div id="budgetResult" class="result-card">
+              <h3>Resultado del gasto</h3>
+              <div id="budgetDetails">——</div>
+            </div>
+          </div>
+        </div>
+        <img src="img/3.jpeg" class="inline-img">
+      </section>
+
+      <!-- Simulador de cola de autos para gasolina -->
+      <section id="colagaso" class="card">
+        <h2>⛽ Simulador de cola en estación de servicio</h2>
+        <p>Ingresa la hora de llegada de la cisterna, tu modelo de auto, la cantidad total de autos en fila y tu posición. Te diremos si alcanzarás a cargar combustible antes de que se agote.</p>
+        <div class="form-grid">
+          <div class="input-group">
+            <label>🕒 Hora de llegada de la cisterna (HH:MM):</label>
+            <input type="time" id="cisternTime" value="14:00">
+          </div>
+          <div class="input-group">
+            <label>🚗 Modelo de tu auto:</label>
+            <select id="carModel">
+              <option value="compacto">Auto compacto (35 litros)</option>
+              <option value="moderno">Auto moderno (45 litros)</option>
+              <option value="minibus">Minibús (60 litros)</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label>🚦 Número total de autos en la fila:</label>
+            <input type="number" id="totalCars" value="10" min="1">
+          </div>
+          <div class="input-group">
+            <label>🔢 Tu posición en la fila (1 = primero):</label>
+            <input type="number" id="myPosition" value="3" min="1">
+          </div>
+          <button id="simulateGasBtn" class="btn-primary">🔍 Ver si alcanza gasolina</button>
+        </div>
+        <div id="gasSimResult" class="result-card">
+          <strong>Resultado:</strong> <span id="gasSimText">——</span>
+          <div id="gasSimDetails"></div>
+        </div>
+        <div class="note-card">⚙️ La cisterna tiene 1500 litros. Cada auto carga según su modelo (compacto: 35L, moderno: 45L, minibús: 60L). Se calcula si el combustible alcanza para atender desde el primero hasta tu posición inclusive.</div>
+        <img src="img/4.jpeg" class="inline-img">
+      </section>
+
+      <!-- Validador de billetes BCB -->
+      <section id="billete" class="card">
+        <h2>💰 Billetes sin valor legal · Verificador BCB</h2>
+        <p>Rangos oficiales de Bs10, Bs20 y Bs50 que NO tienen curso legal.</p>
+        <div class="flex-row">
+          <div class="input-group">
+            <label>Denominación:</label>
+            <select id="billDenom">
+              <option value="10">Bs 10</option>
+              <option value="20">Bs 20</option>
+              <option value="50">Bs 50</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label>🔢 Número de serie (solo dígitos):</label>
+            <input type="text" id="serialNumber" placeholder="Ej: 67250001">
+          </div>
+          <button id="validateBillBtn" class="btn-primary">Verificar validez</button>
+        </div>
+        <div id="billResult" class="result-card"></div>
+        <img src="img/5.jpg" class="inline-img">
+      </section>
+
+      <!-- Casos de estudio (solo texto, sin botones) -->
+      <section id="casos" class="card">
+        <h2>📚 Casos de estudio para probar el simulador (situaciones diarias)</h2>
+        <p>Los precios base corresponden al <strong>25 de mayo de 2026</strong> con los siguientes valores:</p>
+        <ul style="margin-bottom: 1rem;">
+          <li><strong>Docena de pimientos:</strong> 15 Bs (antes 10 Bs)</li>
+          <li><strong>3 libras de zanahoria:</strong> 5 Bs (antes 8 Bs)</li>
+          <li><strong>3 libras de cebolla verde:</strong> 15 Bs (antes 5 Bs)</li>
+          <li><strong>3 libras de locoto:</strong> 10 Bs (antes 25 Bs)</li>
+          <li><strong>3 libras de vainita:</strong> 20 Bs (antes 12 Bs)</li>
+          <li><strong>Unidad de piña:</strong> 20 Bs (antes 12 Bs)</li>
+        </ul>
+        <div class="cases-grid">
+          <div class="case-item">
+            <h3>🥬 Evolución semanal de precios</h3>
+            <p>Ejemplo: Durante la primera semana de junio, los pimientos suben un 12%, la zanahoria baja un 8% y la cebolla verde se mantiene. Esto muestra la volatilidad del mercado.</p>
+          </div>
+          <div class="case-item">
+            <h3>🛒 Planificación de compras</h3>
+            <p>Una familia con presupuesto de 200 Bs el 25/05/2026 quiere comprar 2 docenas de pimientos (30 Bs c/u) y 1 piña (20 Bs). Total = 80 Bs → alcanza. Si el presupuesto fuera 60 Bs, no alcanzaría.</p>
+          </div>
+          <div class="case-item">
+            <h3>⛽ Fila en la gasolinera</h3>
+            <p>Cisterna llega a las 16:00, hay 12 autos en fila, tú vas en la posición 7 con un auto moderno (45 L). La cisterna tiene 1500 L. Los autos anteriores consumen en promedio 44.75 L c/u → combustible necesario hasta tu turno ≈ 313 L → sí alcanzas. Tu atención sería aproximadamente a las 16:14.</p>
+          </div>
+          <div class="case-item">
+            <h3>💸 Billetes sin valor legal</h3>
+            <p>Un comerciante recibe un billete de Bs10 con serie 67250001. Según el BCB, ese billete NO tiene valor legal y debe ser rechazado. En cambio, un billete de Bs20 con serie 12345678 es válido.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="conclusiones" class="card">
+        <h2>📊 Reflexión y utilidad del modelo</h2>
+        <p>Esta herramienta educativa permite visualizar cómo la variación semanal de precios afecta el poder adquisitivo, y cómo la posición en una fila y el tipo de auto determinan si se obtiene combustible en contexto de escasez. El validador de billetes evita pérdidas económicas.</p>
+      </section>
+
+      <footer class="footer-credits">
+        <p>Programación Web I - Proyecto Final | HTML5 semántico · CSS3 responsivo · JavaScript DOM</p>
+      </footer>
+    </main>
+  </div>
+  <script src="js/script.js"></script>
+</body>
+</html>
